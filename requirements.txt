@@ -1,7 +1,2 @@
-torch
-transformers[torch]
 streamlit
-accelerate
-scikit-learn
-datetime
-dropbox
+openai
