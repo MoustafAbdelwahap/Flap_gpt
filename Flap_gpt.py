@@ -3,13 +3,13 @@ import streamlit as st
 import requests
 
 import streamlit as st
-import ChatGPTAPIFree
+import chatgpt
 
 # Get the ChatGPT API key
 api_key = st.config.get("chatgpt_api_key")
 
 # Create a ChatGPTAPI object
-chatgpt = ChatGPTAPIFree.ChatGPTAPI(api_key)
+chatgpt = chatgpt.ChatGPTAPI(api_key)
 
 # Define a function to generate text from the ChatGPT API
 def generate_text(prompt):
