@@ -2,34 +2,26 @@ import openai
 import streamlit as st
 import requests
 
-def generate_description(input_text):
-    url = "https://chatgptapifree.herokuapp.com/generate"
-    payload = {
-        "model": "text-davinci-003",
-        "prompt": f"Write a product description based on the below information.\n\n{input_text}\n\nDescription:",
-        "temperature": 0.7,
-        "max_tokens": 256,
-        "top_p": 1,
-        "frequency_penalty": 0,
-        "presence_penalty": 0
-    }
+import streamlit as st
+import ChatGPTAPIFree
 
-    response = requests.post(url, json=payload)
+# Get the ChatGPT API key
+api_key = st.config.get("chatgpt_api_key")
 
-    if response.status_code == 200:
-        return response.json().get("choices", [])[0].get("text", "")
-    else:
-        return "Failed to generate description. Please try again."
+# Create a ChatGPTAPI object
+chatgpt = ChatGPTAPIFree.ChatGPTAPI(api_key)
 
-def main():
-    st.title("Product Description Generator")
-    notes = st.text_area("Enter product information:")
+# Define a function to generate text from the ChatGPT API
+def generate_text(prompt):
+  response = chatgpt.generate_text(prompt)
+  return response["text"]
 
-    if st.button("Generate description"):
-        with st.spinner("Generating description..."):
-            description = generate_description(notes)
-            st.subheader("Generated description:")
-            st.write(description)
+# Create a text input field for the user to enter a prompt
+prompt = st.text_input("Prompt:")
 
-if __name__ == "__main__":
-    main()
+# Generate text from the prompt
+generated_text = generate_text(prompt)
+
+# Display the generated text to the user
+st.markdown(generated_text)
+
