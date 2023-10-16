@@ -37,7 +37,7 @@ Which specific universities are you interested in applying to? {Universities}
 Are you seeking financial aid or scholarships? {scholarships}
 For Visa Requirements, What is your country of origin? {Your_Country}
 Are there any unique circumstances or personal obligations that may affect your application timeline? {circumstances}
-Please be specific and to the point
+Please be specific and to the point. Mention every month in a separate line and below some bullet points with things to do
 """
             response = openai.Completion.create(
                 engine="df",
@@ -49,14 +49,11 @@ Please be specific and to the point
                 presence_penalty=0,
                 stop=None)
         try:
-          generated_text = response.choices[0].text
-          formatted_text = generated_text.split("\n")
-          formatted_text = [line.strip() for line in formatted_text if line.strip() != ""]
-          st.subheader("Generated text:")
-          for line in formatted_text:
-            st.write(f"- {line}")
+            generated_text = response.choices[0].text
+            st.subheader("Generated Action Plan:")
+            st.write(generated_text)
         except ValueError as e:
-          st.error("Failed to generate content.")
+            st.error("Failed to generate content.")
 
 if __name__ == "__main__":
     main()
