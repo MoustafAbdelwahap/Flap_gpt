@@ -37,7 +37,7 @@ Which specific universities are you interested in applying to? {Universities}
 Are you seeking financial aid or scholarships? {scholarships}
 For Visa Requirements, What is your country of origin? {Your_Country}
 Are there any unique circumstances or personal obligations that may affect your application timeline? {circumstances}
-Please be specific and to the point. Mention every month in a separate line and below some bullet points with things to do
+Please be specific and to the point. Mention every month (starting from November 2023 untill March 2024) in a separate line and below some bullet points with things to do
 """
             response = openai.Completion.create(
                 engine="df",
