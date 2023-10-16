@@ -1,4 +1,4 @@
-# Version2
+# Version3
 
 import streamlit as st
 import openai
@@ -9,7 +9,7 @@ openai.api_version = "2023-09-15-preview"
 openai.api_key = "6e9a3f23b26e4310b630a3e77ba238f7"
 
 def main():
-    st.title("Chat with Flap")
+    st.title("Chat with Flap ; Create you Action plan !!")
 
     # Create text input boxes for user inputs
     Country = st.text_input("Country where you want to travel!")
@@ -25,8 +25,8 @@ def main():
     circumstances = st.text_input("Enter any unique circumstances or personal obligations that may affect your application timeline:")
 
     # Generate description based on user inputs
-    if st.button("Generate description"):
-        with st.spinner("Generating description..."):
+    if st.button("Generate"):
+        with st.spinner("Generating the plan..."):
             prompt = f"""
 I want to travel and study in {Country} for {degree_type} degree in {field} in {year}.
 I want it to create an action plan highlighting the milestones/roadmap that guides me how to apply setting monthly targets and mention everything that I need to do starting from this month!
@@ -48,13 +48,15 @@ Please be specific and to the point
                 frequency_penalty=0,
                 presence_penalty=0,
                 stop=None)
-
         try:
-            generated_text = response.choices[0].text
-            st.subheader("Generated text:")
-            st.write(generated_text)
+          generated_text = response.choices[0].text
+          formatted_text = generated_text.split("\n")
+          formatted_text = [line.strip() for line in formatted_text if line.strip() != ""]
+          st.subheader("Generated text:")
+          for line in formatted_text:
+            st.write(f"- {line}")
         except ValueError as e:
-            st.error("Failed to generate content.")
+          st.error("Failed to generate content.")
 
 if __name__ == "__main__":
     main()
