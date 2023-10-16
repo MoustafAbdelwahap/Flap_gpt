@@ -9,7 +9,7 @@ openai.api_version = "2023-09-15-preview"
 openai.api_key = "6e9a3f23b26e4310b630a3e77ba238f7"
 
 def main():
-    st.title("Chat with Flap ; Create you Action plan !!")
+    st.title("Chat with Flap ; Create your Action plan !!")
 
     # Create text input boxes for user inputs
     Country = st.text_input("Country where you want to travel!")
