@@ -5,7 +5,7 @@ import openai
 
 openai.api_type = "azure"
 openai.api_base = "https://flaplife.openai.azure.com/"
-#openai.api_version = "2023-09-15-preview"
+openai.api_version = "2023-09-15-preview"
 openai.api_key = "6e9a3f23b26e4310b630a3e77ba238f7"
 
 def main():
@@ -41,7 +41,7 @@ Please be specific and to the point. Mention every month (starting from November
 """
             response = openai.Completion.create(
                 #engine="df",
-                engine="gpt-3.5-turbo",
+                engine="df",
                 prompt=prompt,
                 temperature=1,
                 max_tokens=500,
