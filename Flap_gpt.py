@@ -40,7 +40,8 @@ Are there any unique circumstances or personal obligations that may affect your 
 Please be specific and to the point. Mention every month (starting from November 2023) in a separate line and below some bullet points with things to do
 """
             response = openai.Completion.create(
-                engine="df",
+                #engine="df",
+                model="df",
                 prompt=prompt,
                 temperature=1,
                 max_tokens=500,
@@ -49,7 +50,8 @@ Please be specific and to the point. Mention every month (starting from November
                 presence_penalty=0,
                 stop=None)
         try:
-            generated_text = response.choices[0].text
+            #generated_text = response.choices[0].text
+            generated_text =response['choices'][0]['text']
             st.subheader("Generated Action Plan:")
             st.write(generated_text)
         except ValueError as e:
