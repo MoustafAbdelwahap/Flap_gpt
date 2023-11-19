@@ -41,7 +41,7 @@ Please be specific and to the point. Mention every month (starting from November
 """
             response = openai.Completion.create(
                 #engine="df",
-                model="gpt-3.5-turbo",
+                engine="gpt-3.5-turbo",
                 prompt=prompt,
                 temperature=1,
                 max_tokens=500,
