@@ -1,12 +1,11 @@
 # Version3
-pip install openai --upgrade
 
 import streamlit as st
 import openai
 
 openai.api_type = "azure"
 openai.api_base = "https://flaplife.openai.azure.com/"
-openai.api_version = "2023-09-15-preview"
+#openai.api_version = "2023-09-15-preview"
 openai.api_key = "6e9a3f23b26e4310b630a3e77ba238f7"
 
 def main():
