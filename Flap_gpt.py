@@ -2,6 +2,7 @@
 
 import streamlit as st
 import openai
+import re
 
 openai.api_type = "azure"
 openai.api_base = "https://flaplife.openai.azure.com/"
