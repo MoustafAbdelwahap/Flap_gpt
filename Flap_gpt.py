@@ -55,13 +55,18 @@ Please be specific and to the point. Mention every month (starting from November
         try:
             #generated_text = response.choices[0].text
             generated_text =response['choices'][0]['text']
-            # Find the index where "Month: January" appears
-            start_index = generated_text.find("Month")
-            # Extract and display the plan starting from "Month: January"
-            if start_index != -1:
-                relevant_text = input_text[start_index:]
-            else:
-                relevant_text = generated_text
+
+            # Define the regular expression pattern
+            month_pattern = re.compile(r'Month: [A-Za-z]+')
+
+            # Find all occurrences of the pattern in the input text
+            month_matches = month_pattern.finditer(generated_text)
+
+            # Extract and display the plan for each month
+            for match in month_matches:
+                start_index = match.start()
+                break
+            relevant_text = input_text[start_index:]
                 
             st.subheader("Generated Action Plan:")
             st.write(relevant_text)
