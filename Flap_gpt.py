@@ -55,8 +55,16 @@ Please be specific and to the point. Mention every month (starting from November
         try:
             #generated_text = response.choices[0].text
             generated_text =response['choices'][0]['text']
+            # Find the index where "Month: January" appears
+            start_index = generated_text.find("Month")
+            # Extract and display the plan starting from "Month: January"
+            if start_index != -1:
+                relevant_text = input_text[start_index:]
+            else:
+                relevant_text = generated_text
+                
             st.subheader("Generated Action Plan:")
-            st.write(generated_text)
+            st.write(relevant_text)
         except ValueError as e:
             st.error("Failed to generate content.")
 
